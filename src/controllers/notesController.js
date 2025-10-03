@@ -1,4 +1,4 @@
-// src/controllers/studentsController.js
+
 
 import { Note } from '../models/note.js';
 import createHttpError from 'http-errors';
@@ -30,9 +30,9 @@ export const getNoteById = async (req, res, next) => {
 
 
 export const deleteNote = async (req, res, next) => {
-  const { notetId } = req.params;
+  const { noteId } = req.params;
   const note = await Note.findOneAndDelete({
-    id: notetId,
+   noteId
   });
 
   if (!note) {
@@ -44,10 +44,10 @@ export const deleteNote = async (req, res, next) => {
 };
 
 export const updateNote = async (req, res, next) => {
-  const { notetId } = req.params;
+  const { noteId } = req.params;
 
   const note = await Note.findOneAndUpdate(
-    { _id: notetId }, // Шукаємо по id
+    { noteId }, // Шукаємо по id
     req.body,
     { new: true }, // повертаємо оновлений документ
   );

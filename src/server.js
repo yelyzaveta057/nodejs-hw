@@ -2,7 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import 'dotenv/config';
-import pino from "pino-http";
+
 
 import { connectMongoDB } from './db/connectMongoDB.js';
 import { errorHandler } from './middleware/errorHandler.js';
@@ -18,9 +18,7 @@ const PORT = process.env.PORT ?? 3030;
 app.use(logger);
 app.use(express.json());
 app.use(cors());
-app.use(
-  pino(),
-);
+
 
 app.use(notesRoutes);
 
@@ -30,11 +28,6 @@ app.use(notFoundHandler);
 // Error — якщо під час запиту виникла помилка
 app.use(errorHandler);
 
-
-
-app.get('/test-error', () => {
-  throw new Error('Simulated server error');
-});
 
 
 await connectMongoDB();
