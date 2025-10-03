@@ -1,7 +1,7 @@
 // src/routes/studentsRoutes.js
 
 import { Router } from 'express';
-import { createNote, deleteNote, getAllNotes, getNoteById, updateNote } from '../controllers/notesControllers.js';
+import { createNote, deleteNote, getAllNotes, getNoteById, updateNote } from '../controllers/notesController.js';
 
 
 
