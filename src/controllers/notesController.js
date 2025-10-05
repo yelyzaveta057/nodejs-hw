@@ -32,7 +32,7 @@ export const getNoteById = async (req, res, next) => {
 export const deleteNote = async (req, res, next) => {
   const { noteId } = req.params;
   const note = await Note.findOneAndDelete({
-   noteId
+    _id: noteId
   });
 
   if (!note) {
@@ -40,14 +40,14 @@ export const deleteNote = async (req, res, next) => {
     return;
   }
 
-  res.status(200).send(note);
+  res.status(200).json(note);
 };
 
 export const updateNote = async (req, res, next) => {
   const { noteId } = req.params;
 
   const note = await Note.findOneAndUpdate(
-    { noteId }, // Шукаємо по id
+    {  _id: noteId }, // Шукаємо по id
     req.body,
     { new: true }, // повертаємо оновлений документ
   );
