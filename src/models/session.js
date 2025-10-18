@@ -29,7 +29,7 @@ const sessionSchema = new Schema(
     },
   },
   {
-    timestamps: true,   // додає createdAt і updatedAt
+    timestamps: true,
     versionKey: false,
   }
 );
