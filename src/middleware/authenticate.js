@@ -20,7 +20,8 @@ export const authenticate = async (req, res, next) =>{
 
   const user = await User.findById(session.userId);
   if(!user){
-    throw createHttpError(401, 'User not found');
+    res.status(401).end();
+  return;
   }
   req.user = user;
   next();

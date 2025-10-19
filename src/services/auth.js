@@ -10,8 +10,8 @@ export const createSession = async (userId) => {
     userId,
     accessToken,
     refreshToken,
-    accessTokenValidUntill: new Date(Date.now() + FIFTEEN_MINUTES),
-    refreshTokenValidUntill: new Date(Date.now() + ONE_DAY),
+    accessTokenValidUntil: new Date(Date.now() + FIFTEEN_MINUTES),
+    refreshTokenValidUntil: new Date(Date.now() + ONE_DAY),
 
   });
 };
@@ -30,7 +30,7 @@ export const setSessionCookies = (res, session) => {
     maxAge: ONE_DAY,
   });
 
-  res.cookie("sessionId", session._id ,{
+  res.cookie("sessionId", session._id.toString() ,{
     httpOnly: true,
     secure: true,
     sameSite: 'none',
