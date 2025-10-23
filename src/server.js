@@ -11,6 +11,7 @@ import { logger } from './middleware/logger.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import notesRoutes from './routes/notesRoutes.js';
 import authRoutes from "./routes/authRoutes.js";
+import userRoutes from './routes/userRoutes.js';
 
 
 const app = express();
@@ -23,6 +24,7 @@ app.use(cors());
 
 app.use(authRoutes);
 app.use(notesRoutes);
+app.use(userRoutes);
 
 // 404 — якщо маршрут не знайдено
 app.use(notFoundHandler);
